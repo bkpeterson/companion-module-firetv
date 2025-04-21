@@ -21,7 +21,7 @@ function execCommand(cmd) {
 			}
 			console.log(`stdout: ${stdout}`);
 			console.error(`stderr: ${stderr}`);
-		}
+		})
 	}
 }
 
