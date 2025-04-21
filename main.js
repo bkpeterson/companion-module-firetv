@@ -1,5 +1,5 @@
 import { InstanceBase, Regex, runEntrypoint, InstanceStatus } from '@companion-module/base'
-import UpdateActions from './actions.js'
+import { UpdateActions } from './actions.js'
 
 class ModuleInstance extends InstanceBase {
 	constructor(internal) {
