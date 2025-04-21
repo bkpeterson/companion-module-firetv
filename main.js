@@ -1,7 +1,7 @@
 const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@companion-module/base')
-const { exec } = require('child_process')
+//const { exec } = require('child_process')
 const UpgradeScripts = require('./upgrades')
-const adb = require('node-adb-api')
+const adb = require('shelljs')
 
 const adbPath = "/home/bjorn/companion-dev/companion-module-firetv/platform-tools/adb"
 
@@ -36,17 +36,17 @@ class FireTVInstance extends InstanceBase {
 					},
 				],
 				callback: async (event) => {
-					exec(adbPath + " devices", (error, stdout, stderr) => {
-						const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\sdevice", "g")
-						const connected = stdout.match(matchVar)
-						if(connected == null) {
-							this.log('debug', 'Connecting... ' + stdout)
-							exec(adbPath + " connect " + this.config.host + ":" + this.config.port);
-						}
-				
-						this.log('debug', 'Connected')
-						exec(adbPath + " shell input keyevent " + event.options.action)
-					});
+					const reply = adb.exec(adbPath + " devices").stdout;
+					this.log('debug', 'ADB: ' + reply)
+					const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\sdevice", "g");
+					const connected = reply.match(matchVar);
+					if(connected == null) {
+						this.log('debug', 'Connecting... ' + stdout)
+						adb.exec(adbPath + " connect " + this.config.host + ":" + this.config.port);
+					}
+			
+					this.log('debug', 'Connected')
+					adb.exec(adbPath + " shell input keyevent " + event.options.action)
 				}
 			}
 		})
