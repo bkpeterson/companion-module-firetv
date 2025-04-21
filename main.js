@@ -1,6 +1,7 @@
 const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@companion-module/base')
 const { exec } = require('child_process')
 const UpgradeScripts = require('./upgrades')
+const adb = require('node-adb-api')
 
 const adbPath = "/home/bjorn/companion-dev/companion-module-firetv/platform-tools/adb"
 
@@ -25,10 +26,10 @@ class FireTVInstance extends InstanceBase {
 						choices: [
 							{ id: '19', label: 'Up'},
 							{ id: '20', label: 'Down'},
-							{ id: '21', label: 'Lef/Prev'},
+							{ id: '21', label: 'Left/Prev'},
 							{ id: '22', label: 'Right/Next'},
 							{ id: '66', label: 'Select/Play/Pause'},
-							{ id: '4',  label: 'Backl'},
+							{ id: '4',  label: 'Back'},
 							{ id: '3',  label: 'Home'},
 							{ id: '1',  label: 'Menu'}
 						]
