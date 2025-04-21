@@ -2,6 +2,8 @@ const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@compani
 const { exec } = require('child_process')
 const UpgradeScripts = require('./upgrades')
 
+const adbPath = "./platform-tools/ubuntu/adb"
+
 class FireTVInstance extends InstanceBase {
 	constructor(internal) {
 		super(internal)
@@ -33,7 +35,7 @@ class FireTVInstance extends InstanceBase {
 					},
 				],
 				callback: async (event) => {
-					exec("./platform-tools/ubuntu/adb devices", (error, stdout, stderr) => {
+					exec(adbPath + " devices", (error, stdout, stderr) => {
 						const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\sdevice", "g")
 						const connected = stdout.match(matchVar)
 						if(connected == null) {
