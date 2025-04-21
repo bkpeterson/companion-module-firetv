@@ -10,7 +10,7 @@ class ModuleInstance extends InstanceBase {
 		this.config = config
 
 		this.updateStatus(InstanceStatus.Ok)
-		UpdateActions()s
+		UpdateActions()
 	}
 	// When module gets deleted
 	async destroy() {
