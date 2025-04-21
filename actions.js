@@ -23,30 +23,32 @@ function execCommand(cmd) {
 	})
 }
 
-module.exports = UpdateActions (self) {
-	self.setActionDefinitions({
-		firetv: {
-			name: 'Fire TV Remote',
-			options: [
-				{
-					id: 'action',
-					type: 'dropdown',
-					label: 'Command',
-					choices: [
-						{ id: '19', label: 'Up'},
-						{ id: '20', label: 'Down'},
-						{ id: '21', label: 'Lef/Prev'},
-						{ id: '22', label: 'Right/Next'},
-						{ id: '66', label: 'Select/Play/Pause'},
-						{ id: '4',  label: 'Backl'},
-						{ id: '3',  label: 'Home'},
-						{ id: '1',  label: 'Menu'}
-					]
+module.exports = {
+	UpdateActions (self) {
+		self.setActionDefinitions({
+			firetv: {
+				name: 'Fire TV Remote',
+				options: [
+					{
+						id: 'action',
+						type: 'dropdown',
+						label: 'Command',
+						choices: [
+							{ id: '19', label: 'Up'},
+							{ id: '20', label: 'Down'},
+							{ id: '21', label: 'Lef/Prev'},
+							{ id: '22', label: 'Right/Next'},
+							{ id: '66', label: 'Select/Play/Pause'},
+							{ id: '4',  label: 'Backl'},
+							{ id: '3',  label: 'Home'},
+							{ id: '1',  label: 'Menu'}
+						]
+					},
+				],
+				callback: async (event) => {
+					execCommand(adbPath + " shell input keyevent " + event.options.action);
 				},
-			],
-			callback: async (event) => {
-				execCommand(adbPath + " shell input keyevent " + event.options.action);
 			},
-		},
-	})
+		})
+	}
 }
