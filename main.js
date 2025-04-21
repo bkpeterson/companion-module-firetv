@@ -1,5 +1,5 @@
-import { InstanceBase, Regex, runEntrypoint, InstanceStatus } from '@companion-module/base'
-import { exec } from 'child_process'
+const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@companion-module/base')
+const { exec } = require('child_process')
 const UpgradeScripts = require('./upgrades')
 
 class FireTVInstance extends InstanceBase {
