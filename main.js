@@ -2,7 +2,7 @@ const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@compani
 const { exec } = require('child_process')
 const UpgradeScripts = require('./upgrades')
 
-const adbPath = "./platform-tools/ubuntu/adb"
+const adbPath = "/home/bjorn/companion-dev/companion-module-firetv/platform-tools/ubuntu/adb"
 
 class FireTVInstance extends InstanceBase {
 	constructor(internal) {
