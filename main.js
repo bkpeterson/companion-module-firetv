@@ -36,7 +36,7 @@ class FireTVInstance extends InstanceBase {
 					},
 				],
 				callback: async (event) => {
-					const reply = adb.exec(adbPath + " devices").stdout;
+					const reply = adb.exec(adbPath + " devices", { silent: true}).stdout;
 					this.log('debug', 'ADB: ' + reply)
 					const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\sdevice", "g");
 					const connected = reply.match(matchVar);
