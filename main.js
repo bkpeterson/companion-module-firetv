@@ -42,17 +42,13 @@ class FireTVInstance extends InstanceBase {
 							exec(adbPath + " connect " + this.config.host + ":" + this.config.port);
 						}
 				
-						exec(cmd);
+						exec(adbPath + " shell input keyevent " + event.options.action, (error, stdout, stderr) => {
+							if (error) {
+								console.error(`exec error: ${error}`);
+								return;
+							}
+						})
 					});
-				
-					exec(adbPath + " shell input keyevent " + event.options.action, (error, stdout, stderr) => {
-						if (error) {
-							console.error(`exec error: ${error}`);
-							return;
-						}
-						console.log(`stdout: ${stdout}`);
-						console.error(`stderr: ${stderr}`);
-					})
 				}
 			}
 		})
