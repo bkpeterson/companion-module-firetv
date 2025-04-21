@@ -24,7 +24,7 @@ function execCommand(cmd) {
 }
 
 module.exports = {
-	UpdateActions(self) {
+	UpdateActions: function(self) {
 		self.setActionDefinitions({
 			firetv: {
 				name: 'Fire TV Remote',
