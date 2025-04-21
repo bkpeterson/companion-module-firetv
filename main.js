@@ -1,5 +1,6 @@
 import { InstanceBase, Regex, runEntrypoint, InstanceStatus } from '@companion-module/base'
 import { exec } from 'child_process'
+const UpgradeScripts = require('./upgrades')
 
 class FireTVInstance extends InstanceBase {
 	constructor(internal) {
@@ -86,10 +87,4 @@ class FireTVInstance extends InstanceBase {
 	}
 }
 
-runEntrypoint(FireTVInstance, function (context, props) {
-	return {
-		updatedConfig: null,
-		updatedActions: [],
-		updatedFeedbacks: [],
-	}
-})
+runEntrypoint(FireTVInstance, UpgradeScripts)
