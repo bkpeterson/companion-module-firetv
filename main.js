@@ -5,9 +5,7 @@ class ModuleInstance extends InstanceBase {
 	constructor(internal) {
 		super(internal)
 
-		Object.assign(this, {
-			..actions
-		})
+		Object.assign(this, {actions})
 	}
 
 	async init(config) {
