@@ -1,0 +1,26 @@
+{
+	"id": "firetv-remote",
+	"name": "Fire TV Remote",
+	"shortname": "firetv-remote",
+	"description": "FireTV Remote",
+	"version": "1.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bkpeterson/companion-module-firetv-remote",
+	"bugs": "https://github.com/bkpeterson/companion-module-firetv-remote/issues",
+	"maintainers": [
+		{
+			"name": "Bjorn Peterson",
+			"email": "bjkarl@yahoo.com"
+		}
+	],
+	"runtime": {
+		"type": "node22",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../main.js"
+	},
+	"legacyIds": [],
+	"manufacturer": "Amazon",
+	"products": ["Fire TV"],
+	"keywords": []
+}
