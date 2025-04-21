@@ -1,18 +1,16 @@
-const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@companion-module/base')
-const actions = require('./actions')
+import { InstanceBase, Regex, runEntrypoint, InstanceStatus } from '@companion-module/base'
+import UpdateActions from './actions.js'
 
 class ModuleInstance extends InstanceBase {
 	constructor(internal) {
 		super(internal)
-
-		Object.assign(this, {actions})
 	}
 
 	async init(config) {
 		this.config = config
 
 		this.updateStatus(InstanceStatus.Ok)
-		this.UpdateActions() // export actions
+		UpdateActions()s
 	}
 	// When module gets deleted
 	async destroy() {
