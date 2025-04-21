@@ -1,4 +1,4 @@
-const { InstanceBase, Regex, runEntrypoint, InstanceStatus } f= require('@companion-module/base')
+const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@companion-module/base')
 const actions = require('./actions')
 
 class ModuleInstance extends InstanceBase {
