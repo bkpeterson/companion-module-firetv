@@ -1,5 +1,4 @@
 import { InstanceBase, Regex, runEntrypoint, InstanceStatus } from '@companion-module/base'
-import { UpgradeScripts } from './upgrades'
 import { UpdateActions } from './actions'
 
 class ModuleInstance extends InstanceBase {
@@ -48,4 +47,4 @@ class ModuleInstance extends InstanceBase {
 	}
 }
 
-runEntrypoint(ModuleInstance, UpgradeScripts)
+runEntrypoint(ModuleInstance)
