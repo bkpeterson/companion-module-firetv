@@ -1,7 +1,7 @@
 import { InstanceBase, Regex, runEntrypoint, InstanceStatus } from '@companion-module/base'
 import { exec } from 'child_process'
 
-class ModuleInstance extends InstanceBase {
+class FireTVInstance extends InstanceBase {
 	constructor(internal) {
 		super(internal)
 	}
@@ -84,10 +84,6 @@ class ModuleInstance extends InstanceBase {
 			},
 		]
 	}
-
-	updateActions() {
-		UpdateActions(this)
-	}
 }
 
-runEntrypoint(ModuleInstance)
+runEntrypoint(FireTVInstance)
