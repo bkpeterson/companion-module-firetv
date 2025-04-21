@@ -13,19 +13,17 @@ function execCommand(cmd) {
 		exec(cmd);
 	});
 
-	function execute(cmd) {
-		exec(cmd, (error, stdout, stderr) => {
-			if (error) {
-				console.error(`exec error: ${error}`);
-				return;
-			}
-			console.log(`stdout: ${stdout}`);
-			console.error(`stderr: ${stderr}`);
-		})
-	}
+	exec(cmd, (error, stdout, stderr) => {
+		if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		}
+		console.log(`stdout: ${stdout}`);
+		console.error(`stderr: ${stderr}`);
+	})
 }
 
-module.exports = function (self) {
+module.exports = UpdateActions (self) {
 	self.setActionDefinitions({
 		firetv: {
 			name: 'Fire TV Remote',
