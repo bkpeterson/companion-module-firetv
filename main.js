@@ -86,4 +86,10 @@ class FireTVInstance extends InstanceBase {
 	}
 }
 
-runEntrypoint(FireTVInstance)
+runEntrypoint(FireTVInstance, function (context, props) {
+	return {
+		updatedConfig: null,
+		updatedActions: [],
+		updatedFeedbacks: [],
+	}
+})
