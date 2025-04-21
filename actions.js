@@ -1,4 +1,4 @@
-var exec = require("child_process").exec;
+const { exec } = require('child_process');
 
 const adbPath = (process.platform == "linux") ? "./platform-tools/ubuntu/adb" : "./platform-tools/adb";
 
