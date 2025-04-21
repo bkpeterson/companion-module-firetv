@@ -39,7 +39,7 @@ class FireTVInstance extends InstanceBase {
 						const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\sdevice", "g")
 						const connected = stdout.match(matchVar)
 						if(connected == null) {
-							this.log('debug', 'Connecting...')
+							this.log('debug', 'Connecting... ' + stdout)
 							exec(adbPath + " connect " + this.config.host + ":" + this.config.port);
 						}
 				
