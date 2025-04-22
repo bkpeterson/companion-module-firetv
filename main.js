@@ -3,7 +3,7 @@ const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@compani
 const UpgradeScripts = require('./upgrades')
 const adb = require('shelljs')
 
-const adbPath = "/home/bjorn/companion-dev/companion-module-firetv/platform-tools/adb"
+const adbPath = "/usr/bin/adb"
 
 class FireTVInstance extends InstanceBase {
 	constructor(internal) {
