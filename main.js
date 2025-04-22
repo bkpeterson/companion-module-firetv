@@ -39,21 +39,28 @@ class FireTVInstance extends InstanceBase {
 					const reply = adb.exec(adbPath + " devices", { silent: true});
 					if(reply.code === 0) {
 						const stdout = reply.stdout;
-						this.log('debug', 'ADB*: ' + stdout)
+						this.log('debug', 'ADB: ' + stdout)
+
+						const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\s*?device", "g");
+						const connected = reply.match(matchVar);
+						if(connected == null) {
+							this.log('debug', 'Connecting... ')
+							adb.exec(adbPath + " connect " + this.config.host + ":" + this.config.port);
+						}
+				
+						this.log('debug', 'Connected')
+						const reply2 = adb.exec(adbPath + " shell input keyevent " + event.options.action)
+						if(reply2.code === 0) {
+							const stdout2 = reply2.stdout;
+							this.log('debug', 'ADB: ' + stdout2)
+						} else {
+							const stderr = reply.stderr;
+							this.log('error', 'ADB: ' + stderr);
+						}
 					} else {
 						const stderr = reply.stderr;
-						this.log('error', 'Err*: ' + stderr);
+						this.log('error', 'ADB: ' + stderr);
 					}
-					this.log('debug', 'ADB: ' + reply)
-					const matchVar = new RegExp(this.config.host + ":" + this.config.port + "\s*?device", "g");
-					const connected = reply.match(matchVar);
-					if(connected == null) {
-						this.log('debug', 'Connecting... ' + stdout)
-						adb.exec(adbPath + " connect " + this.config.host + ":" + this.config.port);
-					}
-			
-					this.log('debug', 'Connected')
-					adb.exec(adbPath + " shell input keyevent " + event.options.action)
 				}
 			}
 		})
